@@ -5,7 +5,8 @@ library(lubridate)
 library(skimr)
 library(dplyr)
 
-#Cyclistic is a bike-share company in Chicago which intends to maximize the number of annual memberships
+#Case
+Cyclistic is a bike-share company in Chicago which intends to maximize the number of annual memberships
 of its users to improve business growth. To achieve this goal, the company aims to convert casual riders
 into annual members by creating campaigns to market targeted at casual riders.
 
@@ -14,12 +15,12 @@ into annual members by creating campaigns to market targeted at casual riders.
 *Use the insight obtained to suggest how to convert casual members into annual members.
 
 #Metadata:
-Cyclistic's historical trip data was obtained from AWS(https://divvy-tripdata.s3.amazonaws.com/index.html).
+Cyclistics historical trip data was obtained from AWS(https://divvy-tripdata.s3.amazonaws.com/index.html).
 This is a public dataset that was made available by Motivate International Inc. The user trip data is 
 provided monthly in a .CSV format and can be easily accessed by the general public.
 For this analysis 11 months worth of data starting from September 2021 to July 2022 will be used.
 
-#Upload datasets for last 10 months
+#Upload the 11 months data 
 
 sep_21 <- read_csv("C:/Users/timot/OneDrive/Documents/R data/Cyclis_CSV/202109-divvy-tripdata.csv")
 oct_21 <- read_csv("C:/Users/timot/OneDrive/Documents/R data/Cyclis_CSV/202110-divvy-tripdata.csv")
@@ -111,22 +112,10 @@ nrow(cyclistic_df2) - nrow(cyclistic_df3)
 colnames(cyclistic_df3)
 
 
-***************
-4.
-A summary of your analysis
-5.
-Supporting visualizations and key findings
-6.
-Your top three recommendations based on your analysis
-**************************************************
-
-
-
 # Analyze the data
 
 table(cyclistic_df2$day_of_week)
 summary(cyclistic_df3$ride_length)
-
 
 cyclistic_df3 %>%
 	group_by(member_casual, day_of_week) %>%
@@ -143,8 +132,8 @@ cyclistic_df3 %>%
   geom_col(position = "dodge")+ labs(title= "Number of rides by users per weekday")
 
 Insight
-## Members generally take more trips during the week
-## Casual members take more trips during weekends(saturday and sunday) than registered members
+# Members generally take more trips during the week
+# Casual members take more trips during weekends(saturday and sunday) than registered members
 
 
 #Checking the average duration of each rider type per week day
@@ -158,10 +147,11 @@ cyclistic_df3 %>%
   geom_col(position = "dodge") + labs(title= "Average ride lenght of users per weekday")
 
 Insight
-## Casual members take longer trips than registered members weekly
+# Casual members take longer trips than registered members weekly
 
 
-##Task: The difference between casual users and members is in the number of trips per week,
+#Task: 
+The difference between casual users and members is in the number of trips per week,
 the number of trips over the weekends, and the duration of the trips 
 
 Recommendations
@@ -170,8 +160,6 @@ Recommendations
  Offer discount to members based on ride_length
 
 	
-?write_csv
-
 write_csv(cyclistic_df3, "final_cylisticdf.csv")
 
 Resources
